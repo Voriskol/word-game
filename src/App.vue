@@ -10,9 +10,14 @@ import { useRandomWord } from '@/composables/useRandomWord'
 import { useLetters } from '@/composables/useLetters'
 import { useNotification } from '@/composables/useNotification'
 
+// Модуль для генерации случайного слова
 const { word, getRandomWord } = useRandomWord()
+
+// Модуль для работы с буквами
 const { letters, correctLetters, inCorrectLetters, isWin, isLose, addLetter, resetLetters } =
   useLetters(word)
+
+// Модуль для отображения уведомлений
 const { notification, showNotification } = useNotification()
 
 const popUp = ref<InstanceType<typeof GameFinal> | null>(null)
@@ -40,7 +45,6 @@ const restart = async () => {
 document.addEventListener('keydown', (event) => {
   if (isLose.value || isWin.value) return
 
-
   if (letters.value.includes(event.key)) {
     showNotification()
     return
@@ -50,10 +54,6 @@ document.addEventListener('keydown', (event) => {
 </script>
 
 <template>
-  {{ word }}
-  {{ letters }}
-  {{ correctLetters }}
-  {{ inCorrectLetters }}
   <div id="app">
     <GameHeader />
     <div class="game-container">
