@@ -8,6 +8,7 @@ interface IProps {
 
 defineProps<IProps>()
 
+
 const gameStatus = ref<GameStatus | null>(null)
 const isVisible = ref<boolean>(false)
 
